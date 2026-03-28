@@ -23,5 +23,13 @@
     "express-handlebars": "^8.0.1",
     "mongoose": "^8.19.1",
     "serve-favicon": "^2.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Catastr0phi/simple-models.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Catastr0phi/simple-models/issues"
+  },
+  "homepage": "https://github.com/Catastr0phi/simple-models#readme"
 }

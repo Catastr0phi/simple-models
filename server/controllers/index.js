@@ -218,6 +218,30 @@ const createDog = async (req, res) => {
   }
 };
 
+const increaseAge = async (req, res) => {
+  try {
+    // Find the searched dog and increase its age
+    const searchedDog = await Dog.findOneAndUpdate({name: req.query.name}, {$inc : {'age' : 1}});
+
+    // Error if dog is not found
+    if (!searchedDog){
+      return res.status(404).json({ error: 'Dog not found in database' });
+    }
+
+    // Return updated dog
+    return res.status(200).json({
+      name: searchedDog.name,
+      breed: searchedDog.breed,
+      age: searchedDog.age,
+    });
+
+  }
+  catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Failed to update dog' });
+  }
+}
+
 // Function to handle searching a cat by name.
 const searchName = async (req, res) => {
   /* When the user makes a POST request, bodyParser populates req.body with the parameters
@@ -327,5 +351,6 @@ module.exports = {
   updateLast,
   searchName,
   notFound,
-  createDog
+  createDog,
+  increaseAge
 };
